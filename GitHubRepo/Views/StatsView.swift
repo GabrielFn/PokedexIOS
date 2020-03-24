@@ -61,11 +61,10 @@ struct StatsView: View {
                             .frame(width: 35, alignment: .leading)
                             .foregroundColor(self.statsColor)
                         ProgressBar(value: (Float(stat.base_stat) / 255), progressColor: self.statsColor).frame(height: 7)
+                        Text(String(stat.base_stat)).frame(width: 35, alignment: .leading).font(.caption)
                     }
                 }
             }
-            
-            Spacer()
         }.padding(.horizontal, 20)
     }
 }

@@ -13,6 +13,7 @@ struct Pokemon: Decodable {
     var name: String
     var types: [PokeType]
     var stats: [PokeStat]
+    var moves: [PokeMove]
     var height: Int
     var weight: Int
 }
@@ -27,11 +28,19 @@ struct PokeStat: Decodable, Hashable {
     var stat: PokemonStat
 }
 
+struct PokeMove: Decodable, Hashable {
+    var move: PokemonMove
+}
+
 struct PokemonType: Decodable, Hashable {
     var name: String
     var url: String
 }
 
 struct PokemonStat: Decodable, Hashable {
+    var name: String
+}
+
+struct PokemonMove: Decodable, Hashable {
     var name: String
 }

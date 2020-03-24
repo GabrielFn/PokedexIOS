@@ -30,59 +30,60 @@ struct PokemonView: View {
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
                 
-                pokemonVM.pokemonColor.edgesIgnoringSafeArea(.all)
-
-                VStack {
-                    Image(uiImage: UIImage(data: pokemonVM.pokemonImage) ?? UIImage())
-                        .resizable()
-                        .frame(width: 150.0)
-                        .frame(height: 150.0)
-                        .padding(.top, 30)
-                        .aspectRatio(contentMode: .fit)
-                        .offset(y: 70)
-                        .zIndex(1)
-                    
+                LinearGradient(gradient: Gradient(colors: [pokemonVM.pokemonColor, pokemonVM.pokemonColor, .white, .white, .white]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+                
+                ScrollView(.vertical) {
                     VStack {
-                        HStack { Spacer() }.padding(.top, 60)
-                        Text(pokemonVM.pokemon.name.capitalized).font(.largeTitle)
-                        
-                        HStack {
-                            Text("Height: \(pokemonVM.pokemon.height)m").font(.caption)
-                            Text("Weight: \(pokemonVM.pokemon.weight)kg").font(.caption)
-                        }.padding(.top, 7)
-                        
-                        HStack {
-                            ForEach(pokemonVM.pokemon.types, id: \.self) { pokeType in
-                                Text(pokeType.type.name.capitalized)
-                                    .font(.caption)
-                                    .padding(.horizontal, 7)
-                                    .padding(.vertical, 5)
-                                    .background(getPokemonTypeColor(pokemonType: pokeType.type.name))
-                                    .cornerRadius(10)
+                        VStack {
+                            Image(uiImage: UIImage(data: self.pokemonVM.pokemonImage) ?? UIImage())
+                                .resizable()
+                                .frame(width: 150.0)
+                                .frame(height: 150.0)
+                                .aspectRatio(contentMode: .fit)
+                        }.offset(y: 70).zIndex(2)
+                            
+                        VStack {
+                            HStack{ Spacer() }.padding(.top, 60)
+                            Text(self.pokemonVM.pokemon.name.capitalized).font(.largeTitle)
+                                            
+                            HStack {
+                                Text("Height: \(self.pokemonVM.pokemon.height)m").font(.caption)
+                                Text("Weight: \(self.pokemonVM.pokemon.weight)kg").font(.caption)
+                            }.padding(.top, 7)
+                                            
+                            HStack {
+                                ForEach(self.pokemonVM.pokemon.types, id: \.self) { pokeType in
+                                    Text(pokeType.type.name.capitalized)
+                                        .font(.caption)
+                                        .padding(.horizontal, 7)
+                                        .padding(.vertical, 5)
+                                        .background(getPokemonTypeColor(pokemonType: pokeType.type.name))
+                                        .cornerRadius(10)
+                                }
+                            }.padding(.top, 10)
+                                            
+                            CustomTabView(selected: self.$selectedTab, tabs: self.tabsModel, selectedColor: self.pokemonVM.pokemonColor)
+                                .padding(.top, 25)
+                                            
+                            if self.selectedTab == 0 {
+                                StatsView(stats: self.pokemonVM.pokemon.stats, statsColor: self.pokemonVM.pokemonColor).padding(.top, 15)
+                            } else if self.selectedTab == 1 {
+                                Text("Evolucoes")
+                            } else if self.selectedTab == 2 {
+                                MovesListView(moves: self.pokemonVM.pokemon.moves).padding(.top, 15)
                             }
-                        }.padding(.top, 10)
-                        
-                        CustomTabView(selected: $selectedTab, tabs: self.tabsModel, selectedColor: pokemonVM.pokemonColor)
-                            .padding(.top, 25)
-                        
-                        if selectedTab == 0 {
-                            StatsView(stats: pokemonVM.pokemon.stats, statsColor: pokemonVM.pokemonColor).padding(.top, 15)
-                        } else if selectedTab == 1 {
-                            Text("Evolucoes")
-                        } else if selectedTab == 2 {
-                            Text("Movimentos")
+                                            
+                            Spacer()
                         }
-                        
-                        Spacer()
+                        .background(Color.white)
+                        .cornerRadius(radius: 40, corners: [.topRight, .topLeft])
+                        .edgesIgnoringSafeArea(.bottom)
                     }
-                    .background(Color.white)
-                    .cornerRadius(radius: 50, corners: [.topRight, .topLeft])
-                    .shadow(color: Color.gray, radius: 3, x: 1, y: -1)
-                    .edgesIgnoringSafeArea(.bottom)
                 }
                 
+                
                 CustomNavigationView(navigationTitle: "Voltar", navigationColor: Color.black)
-            }
+        }
     }
 }
 

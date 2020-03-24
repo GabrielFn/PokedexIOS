@@ -12,7 +12,7 @@ import SwiftUI
 class PokemonViewModel: ObservableObject, Identifiable {
     var api = API()
     
-    @Published var pokemon = Pokemon(id: 0, name: "", types: [], stats: [], height: 0, weight: 0) {
+    @Published var pokemon = Pokemon(id: 0, name: "", types: [], stats: [], moves: [], height: 0, weight: 0) {
         didSet {
             if (self.pokemon.id != 0) {
                 fetchPokemonImage(pokemonId: self.pokemon.id)
@@ -32,7 +32,7 @@ class PokemonViewModel: ObservableObject, Identifiable {
                 $0.slot < $1.slot
             }
             
-            self.pokemon = result ?? Pokemon(id: 0, name: "", types: [], stats: [], height: 0, weight: 0)
+            self.pokemon = result ?? Pokemon(id: 0, name: "", types: [], stats: [], moves: [], height: 0, weight: 0)
             self.pokemon.types = resultSorted!
             self.pokemonColor = getPokemonTypeColor(pokemonType: self.pokemon.types.first!.type.name)
         }

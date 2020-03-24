@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A20CC592428EBD300C1EDB2 /* MovesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20CC582428EBD300C1EDB2 /* MovesListView.swift */; };
 		2A48D6692424431000D2E22C /* PokemonListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D6682424431000D2E22C /* PokemonListItemView.swift */; };
 		2A48D66B242453C100D2E22C /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D66A242453C100D2E22C /* PokemonViewModel.swift */; };
 		2A48D66D2424554500D2E22C /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A48D66C2424554500D2E22C /* PokemonModel.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A20CC582428EBD300C1EDB2 /* MovesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesListView.swift; sourceTree = "<group>"; };
 		2A48D6682424431000D2E22C /* PokemonListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListItemView.swift; sourceTree = "<group>"; };
 		2A48D66A242453C100D2E22C /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		2A48D66C2424554500D2E22C /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				2A8E79EE2426B8F8006C39FD /* CustomNavigationView.swift */,
 				2A4F60692427E9B90079811C /* CustomTabView.swift */,
 				2ABBB7382428383F00626424 /* StatsView.swift */,
+				2A20CC582428EBD300C1EDB2 /* MovesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				2A4B0BC3242588EB00E562B2 /* PokemonView.swift in Sources */,
 				2AF183DD2417C4E800209D66 /* PokemonListView.swift in Sources */,
 				2AFD2DA724190BF6003878CD /* PokemonListModel.swift in Sources */,
+				2A20CC592428EBD300C1EDB2 /* MovesListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
